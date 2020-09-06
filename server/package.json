@@ -10,7 +10,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest",
     "client": "cd ../client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
@@ -19,14 +19,12 @@
   },
   "jest": {
     "verbose": true,
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/"
-    ],
     "moduleFileExtensions": [
       "js"
     ]
   },
   "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

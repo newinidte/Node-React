@@ -1,10 +1,10 @@
 
 import { getByCenterId } from '../src/routes/oOhRetrieve.js'
 
-describe("getByCenterId()", () => {
-    it("should return true", () => {
-        //Testing a boolean
-        expect(getByCenterId(null)).toBe('');
-      
-    });
-});
+
+
+test('Check the center Name', async () => {
+    const data = await getByCenterId(2);
+    console.log(data+ JSON.stringify(data))
+    expect(data[0].Name).toBe('westfield');
+  });
