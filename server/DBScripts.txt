@@ -1,0 +1,58 @@
+
+
+ 
+CREATE TABLE Assets(
+    `Id` int AUTO_INCREMENT NOT NULL,
+    `Name` varchar(100) NOT NULL,
+    `Description` varchar(200) NOT NULL,
+    `Width` int NOT NULL,
+    `Height` int NOT NULL,
+    `Length` int NOT NULL,
+    `Status` char(1) NOT NULL,
+    `LocationId` int NOT NULL,
+     CONSTRAINT `PK_Assets` PRIMARY KEY
+    (
+    `Id` ASC
+    )
+    );
+    /****** Object:  Table [dbo].[Centres]    Script Date: 3/09/2020 2:17:13 PM ******/
+    /* SET ANSI_NULLS ON */
+     
+    /* SET QUOTED_IDENTIFIER ON */
+     
+    CREATE TABLE Centres(
+    `Id` int AUTO_INCREMENT NOT NULL,
+    `Name` varchar(200) NOT NULL,
+    `Street` varchar(200) NOT NULL,
+    `City` varchar(50) NOT NULL,
+    `State` varchar(50) NOT NULL,
+    `ZipCode` varchar(10) NOT NULL,
+     CONSTRAINT `PK_Centre` PRIMARY KEY
+    (
+    `Id` ASC
+    )
+    );
+    /****** Object:  Table [dbo].[Locations]    Script Date: 3/09/2020 2:17:13 PM ******/
+    /* SET ANSI_NULLS ON */
+     
+    /* SET QUOTED_IDENTIFIER ON */
+     
+    CREATE TABLE Locations(
+    `Id` int AUTO_INCREMENT NOT NULL,
+    `Name` varchar(200) NOT NULL,
+    `Description` varchar(500) NOT NULL,
+    `CentreId` int  NOT NULL,
+     CONSTRAINT `PK_Location_1` PRIMARY KEY
+    (
+    `Id` ASC
+    )
+    );
+    ALTER TABLE `Assets`  ADD  CONSTRAINT `FK_Assets_Location` FOREIGN KEY(`LocationId`)
+    REFERENCES Locations(`Id`);
+    
+    
+    ALTER TABLE `Locations`   ADD  CONSTRAINT `FK_Location_Centre` FOREIGN KEY(`CentreId`)
+    REFERENCES Centres(`Id`)
+    
+    
+    
