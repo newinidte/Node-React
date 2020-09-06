@@ -10,13 +10,21 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "client": "cd ../client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "dev:server": "cd client && yarn build && cd .. && yarn start",
-    "test": "jest",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "node server.js"
+  },
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -26,21 +34,10 @@
     "jest": "^26.4.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.5",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
-    "npm": "^6.14.8",
-    "nvm": "0.0.4",
-    "sequelize": "^6.3.5"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/esausilva/example-create-react-app-express.git"
-  },
-  "bugs": {
-    "url": "https://github.com/esausilva/example-create-react-app-express/issues"
   },
   "keywords": [
     "node",
